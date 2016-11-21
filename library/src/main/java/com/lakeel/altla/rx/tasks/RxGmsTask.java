@@ -13,11 +13,21 @@ import rx.Single;
 import rx.SingleSubscriber;
 import rx.Subscriber;
 
+/**
+ * Provides methods to wrap {@link Task} in a Rx object.
+ */
 public final class RxGmsTask {
 
     private RxGmsTask() {
     }
 
+    /**
+     * Wraps the specified {@link Task} in {@link Observable}.
+     *
+     * @param task      The wrapped task.
+     * @param <TResult> The generic parameter of the specified task.
+     * @return The {@link Observable} that wraps the specified {@link Task}.
+     */
     public static <TResult> Observable<TResult> asObservable(final Task<TResult> task) {
         return Observable.create(new Observable.OnSubscribe<TResult>() {
             @Override
@@ -39,6 +49,13 @@ public final class RxGmsTask {
         });
     }
 
+    /**
+     * Wraps the specified {@link Task} in {@link Single}.
+     *
+     * @param task      The wrapped task.
+     * @param <TResult> The generic parameter of the specified task.
+     * @return The {@link Single} that wraps the specified {@link Task}.
+     */
     public static <TResult> Single<TResult> asSingle(final Task<TResult> task) {
         return Single.create(new Single.OnSubscribe<TResult>() {
             @Override
@@ -59,6 +76,13 @@ public final class RxGmsTask {
         });
     }
 
+    /**
+     * Wraps the specified {@link Task} in {@link Completable}.
+     *
+     * @param task      The wrapped task.
+     * @param <TResult> The generic parameter of the specified task.
+     * @return The {@link Completable} that wraps the specified {@link Task}.
+     */
     public static <TResult> Completable asCompletable(final Task<TResult> task) {
         return Completable.create(new Completable.OnSubscribe() {
             @Override
