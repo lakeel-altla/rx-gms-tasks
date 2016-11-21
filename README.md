@@ -14,11 +14,11 @@ import rx.Single;
 Task<Void> task = ...
 
 // to Observable
-Observable observable = RxGmsTask.asObservable(task);
+Observable<Void> observable = RxGmsTask.asObservable(task);
 
 // to Single
-Single single = RxGmsTask.asSingle(task);
+Single<Void> single = RxGmsTask.asSingle(task);
 
 // to Completable
-Completable completable = RxGmsTask.asCompletable(task);
+Completable<Void> completable = RxGmsTask.asCompletable(task);
 ```
